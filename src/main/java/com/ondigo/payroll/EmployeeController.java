@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 class EmployeeController {
-
     private final EmployeeRepository repository;
+    private final EmployeeModelAssembler assembler;
 
-    EmployeeController(EmployeeRepository repository) {
+
+    EmployeeController(EmployeeRepository repository, EmployeeModelAssembler assembler) {
+
         this.repository = repository;
+        this.assembler = assembler;
     }
-
 
     // Aggregate root
     // tag::get-aggregate-root[]
@@ -61,6 +63,8 @@ class EmployeeController {
     void deleteEmployee(@PathVariable Long id) {
         repository.deleteById(id);
     }
+
+
 }
 
 
