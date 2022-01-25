@@ -6,6 +6,8 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -26,5 +28,10 @@ public class PayrollApplication {
 		return EntityModel.of(employee, //
 				linkTo(methodOn(EmployeeController.class).one(id)).withSelfRel(),
 				linkTo(methodOn(EmployeeController.class).all()).withRel("employees"));
+	}
+
+	@GetMapping("/employees")
+	List<Employee> all() {
+		return repository.findAll();
 	}
 }
