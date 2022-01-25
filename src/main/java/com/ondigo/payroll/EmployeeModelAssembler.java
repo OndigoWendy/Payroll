@@ -18,6 +18,7 @@ class EmployeeModelAssembler implements RepresentationModelAssembler<Employee, E
                 linkTo(methodOn(EmployeeController.class).one(employee.getId())).withSelfRel(),
                 linkTo(methodOn(EmployeeController.class).all()).withRel("employees"));
     }
+
     @RestController
     class EmployeeController {
 
@@ -30,4 +31,6 @@ class EmployeeModelAssembler implements RepresentationModelAssembler<Employee, E
             this.repository = repository;
             this.assembler = assembler;
         }
+    }
+
 }

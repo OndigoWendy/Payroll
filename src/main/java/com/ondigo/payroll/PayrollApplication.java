@@ -30,6 +30,9 @@ public class PayrollApplication {
 		return EntityModel.of(employee, //
 				linkTo(methodOn(EmployeeController.class).one(id)).withSelfRel(),
 				linkTo(methodOn(EmployeeController.class).all()).withRel("employees"));
+
+			return assembler.toModel(employee);
+
 	}
 
 	@GetMapping("/employees")
